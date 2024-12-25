@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+    #top {
+        min-width: 1340px;
+        background-color: rgb(46, 45, 45);
+        height: 780px;
+    }
+    .nav-container {
+        margin: 0px 160px;
+        display: flex;
+        list-style: none;
+    }
+    #logo img {
+        margin-top: 15px;
+        padding: 6px;
+        height: 32px;
+        width: 32px;
+    }
+    .nav-item1 {
+        width: 100px;
+        margin-top: 5px;
+        padding: 20px;
+    }
+    .nav-item1 a {
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+    .nav-item {
+        margin: 5px;
+        padding: 20px;
+    }
+    .nav-item a {
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+    #introduce {
+        display: inline-block;
+        width: 470px;
+        height: 300px;
+        margin: 100px 80px 100px 260px;
+        padding: 57px;
+    }
+    #title {
+        font-size: 4rem;
+        color: white;
+    }
+    #contenttext {
+        font-size: 20px;
+        color: darkgray;
+    }
+    #openSource , #business{
+        text-decoration: underline;
+        text-decoration-color: darkgray;
+        color: white;
+    }
+    #main {
+        display: flex;
+        justify-content: left;
+    }
+    #login {
+        width: 470px;
+        height: 560px;
+        padding: 23px;
+        background-color: white;
+        border-radius: 5px;
+    }
+    #Username, #Email, #Password {
+        border: 1.5px solid rgb(234, 229, 229); 
+        margin-top: 10px;
+        width: 450px;
+        font-size: 18px;
+        height: 57px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    #logintext {
+        font-size: 14px;
+        color: rgb(101, 100, 100);
+    }
+    #Learn {
+        color: rgb(6, 149, 205);
+    }
+    #loginbutton {
+        color: white;
+        margin-top: 20px;
+        width: 469px;
+        height: 65px;
+        background-color: #03c75a;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+    }
+    #loginbutton:hover {
+        cursor: pointer;
+    }
+    #textbottom {
+        margin-top: 45px;
+        color: rgba(112, 112, 112, 0.758);
+        font-size: 14px;
+    }
+    #Terms {
+        color: rgb(6, 149, 205);
+    }
+    #Statement {
+        color: rgb(6, 149, 205);
+    }
+    #footerImg {
+        margin: 25px 0px 0px 1070px;
+        width: 530px;
+        height: 230px;
+    }
+    #search-github {
+        margin-top: 20px;
+        margin-left: 120px;
+        padding: 0px 10px;
+        width: 230px;
+        height: 35px;
+        background-color: gray;
+        border-radius: 5px;
+    }
+    #search-github::placeholder {
+        color: white;
+    }
+    #top-head {
+        display: flex;
+    }
+    .sign {
+        display: flex;
+        list-style: none;
+    }
+    #sign-item1 {
+        width: 80px;
+        margin-top: 15px;
+        padding: 15px;
+        cursor: pointer;
+    }
+    #sign-item1 a, #sign-item2 a {
+        text-align: center;
+        text-decoration: none;
+        color: white;
+    }
+    #sign-item2 {
+        width: 63px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        padding: 3px 0px 0px 5px;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+    #search {
+        display: flex;
+    }
+    #searchButton {
+        margin: 29px -27px;
+        background-color: gray;
+        border: 1px solid white;
+        border-radius: 5px;
+        color: white;
+        padding: 2px 7px;
+    }
+</style>
+<body>
+    <div id="top">
+        <div id="top-head">
+            <ul class="nav-container">
+                <div id="logo"><img src="fluidicon.png" alt="GitHub logo"/></div>
+                <li class="nav-item1"><a href="#">Why GitHub?</a></li>
+                <li class="nav-item"><a href="#">Team</a></li>
+                <li class="nav-item"><a href="#">Enterprise</a></li>
+                <li class="nav-item"><a href="#">Explore</a></li>
+                <li class="nav-item"><a href="#">Marketplace</a></li>
+                <li class="nav-item"><a href="#">Pricing</a></li>
+            </ul>
+            <div id="search">
+                <form action="">
+                    <label for="search-github"></label>
+                    <input id="search-github" type="text" placeholder="Search GitHub" />
+                </form>
+                <div>
+                    <button id="searchButton">/</button>
+                </div>
+            </div>
+            <nav>
+                <ul class="sign">
+                    <li id="sign-item1"><a href="#">Sign in</a></li>
+                    <li id="sign-item2"><a href="#">Sign up</a></li>
+                </ul>
+                
+            </nav>
+        </div>
+        <div id="main">
+            <span id="introduce">
+                <h1 id="title">
+                    Built for<br>
+                    developers
+                </h1>
+                <p id="contenttext">
+                    GitHub is a development platform inspired by the<br>
+                    way you work. From <span id="openSource">open source</span> to <span id="business">business</span>, you<br>
+                    can host and review code, manage projects, and<br>
+                    build software alongside 50 million developers.
+                </p>
+            </span>
+            <div id="loginbox">
+                <form action="">
+                    <div id="login">
+                        <label for="Username">Username</label>
+                        <br>
+                        <input id="Username" type="text" />
+                        <label for="Email">Email</label>
+                        <br>
+                        <input id="Email" type="email" />
+                        <label for="Password">Password</label>
+                        <br>
+                        <input id="Password" type="password" />
+                        <p id="logintext">
+                            Make sure it's at least 15 characters OR at least 8 characters including a
+                            <br>
+                            number and a lowercase letter. <span id="Learn">Learn more.</span>
+                        </p>
+                        <button id="loginbutton">Sign up for GitHub</button>
+                        <p id="textbottom">
+                            By clicking "Sign up for GitHub", you agree to our <span id="Terms">Terms of Service</span> and
+                            <br>
+                            <span id="Statement">Privacy Statement.</span> We'll occasionally send you account related emails. 
+                        </p>
+                    </div>  
+                </form>  
+            </div>
+    
+        </div>  
+        <footer id="foot">
+            <img src="footer.png" alt="footer img" id="footerImg">
+        </footer>
+    </div>
+</body>
+</html>

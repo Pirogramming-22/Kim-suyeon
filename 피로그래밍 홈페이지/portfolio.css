@@ -105,11 +105,11 @@ body {
     padding: 16px;
     margin: 0 0 16px;
     gap: 16px;
-    animation: up 0.3s ease;
 }
 
 .portfolio-element:hover {
     transform: translateY(-2px); 
+    animation: up 0.1s ease-in-out forwards;
 }
 
 

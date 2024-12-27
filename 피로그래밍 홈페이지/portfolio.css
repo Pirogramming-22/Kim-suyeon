@@ -238,6 +238,7 @@ body {
     left: 100px;
     color:white;
     list-style: none;
+    font-size: 14px;
 }
 .footer-box1 li {
     margin-top: 20px;
@@ -308,11 +309,9 @@ body {
     }
     .footer-box1 {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
     }
-    .piro2 {
-        margin-left: 70px;
-    }
+
 
 }

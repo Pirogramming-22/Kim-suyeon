@@ -108,7 +108,6 @@ body {
 }
 
 .portfolio-element:hover {
-    transform: translateY(-2px); 
     animation: up 0.1s ease-in-out forwards;
 }
 

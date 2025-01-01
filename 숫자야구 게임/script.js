@@ -29,16 +29,26 @@ function check_numbers() {
 
     let strikes = 0;
     let balls = 0;
+    const checkedIndexes = []; 
 
-    // 스트라이크와 볼 계산
+    // 스트라이크 계산
     userNumbers.forEach((num, index) => {
-        const userNum = Number(num); 
+        const userNum = Number(num);
         if (computer[index] === userNum) {
-            strikes++;
-        } else if (computer.includes(userNum)) {
-            balls++;
+            strikes++; 
+            checkedIndexes.push(index); 
         }
     });
+
+    // 볼 계산
+    userNumbers.forEach((num, index) => {
+        const userNum = Number(num);
+        if (computer.includes(userNum) && computer.indexOf(userNum) !== index && !checkedIndexes.includes(computer.indexOf(userNum)) ) {
+            balls++; 
+            checkedIndexes.push(computer.indexOf(userNum)); 
+        }
+    });
+
 
     // 결과 출력
     const resultText = document.createElement('div');
@@ -86,6 +96,7 @@ function check_numbers() {
         gameResultImg.src = "./success.png"; 
         AttemptsDiv.style.display = 'none';
         button.disabled = true; 
+        inputBox.forEach(input => (input.value = ""));
         return;
     }
 
@@ -94,6 +105,7 @@ function check_numbers() {
         gameResultImg.src = "./fail.png"; 
         AttemptsDiv.style.display = 'none';
         button.disabled = true; 
+        inputBox.forEach(input => (input.value = ""));
         return;
     }
 

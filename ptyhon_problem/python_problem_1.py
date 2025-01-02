@@ -17,6 +17,7 @@ while num < 31:
                     num+=1
                     print("playerA : {0}".format(num))
                     if num == 31:
+                        print("playerB win!")
                         exit()
                 break
         except ValueError:
@@ -34,6 +35,7 @@ while num < 31:
                     num+=1
                     print("playerB : {0}".format(num))
                     if num == 31:
+                        print("playerA win!")
                         exit()
                 break
         except ValueError:

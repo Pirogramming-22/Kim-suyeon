@@ -11,6 +11,10 @@ while True:
         if numberCount not in [1,2,3]:
             print("1,2,3 중 하나를 입력하세요")
         else:
+            #4단계
+            for i in range(numberCount):
+                num+=1
+                print("playerA : {0}".format(num))
             break
     except ValueError:
         print("정수를 입력하세요")

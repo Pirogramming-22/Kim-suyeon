@@ -1,0 +1,75 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50dvh;
+}
+.stopwatchBox {
+    background-color: rgba(56, 134, 108, 0.638);
+    border-radius: 20px;
+    width: 20%;
+    height: 9rem;
+    text-align: center;
+    box-shadow: 0 0 10px 3px rgba(128, 128, 128, 0.5);
+}
+.number {
+    position: relative;
+    background-color: white;
+    margin: 20px 20px;
+    border-radius: 15px;
+    height: 3rem;
+}
+.number h1 {
+    padding: 5px;
+}
+.stopwatchButtonStop, .stopwatchButtonReset {
+    width: 2.7rem;
+    height: 2.5rem;
+    border-radius: 40%;
+    margin-left: 20px;
+    border: none;
+    box-shadow: 0 0 10px 3px rgba(128, 128, 128, 0.5);
+    cursor: pointer;
+}
+.stopwatchButtonStart {
+    width: 2.7rem;
+    height: 2.5rem;
+    border-radius: 40%;
+    border: none;
+    box-shadow: 0 0 10px 3px rgba(128, 128, 128, 0.5);
+    cursor: pointer;
+}
+.recordBox{
+    background-color: rgba(56, 134, 108, 0.638);
+    margin-top: 20px;
+    border-radius: 20px 20px 0 0;
+    width: 20%;
+    height: 2rem;
+    text-align: center;
+}
+.recordElement {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5px;
+}
+
+.recordElement svg:hover {
+    fill: red;
+    cursor: pointer;
+
+}
+.recordLetter {
+    position: absolute;
+    margin: 0 atuo;
+    list-style: none;
+}
+.check {
+    width: 1.3rem;
+    height: 1.3rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid black;
+}

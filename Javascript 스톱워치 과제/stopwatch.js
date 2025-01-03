@@ -32,20 +32,10 @@ buttonReset.addEventListener('click', () => {
 
 function operateTimer() {
     tenMillis++;
-    appendTens.textContent = tenMillis
-    if (tenMillis > 9) {
-        tenMillis
-    } else {
-        '0' + tenMillis
-    } 
+    appendTens.textContent = tenMillis > 9 ? tenMillis : '0' + seconds
     if(tenMillis>99) {
         seconds++;
         appendSeconds.textContent=seconds > 9 ? seconds : '0' + seconds
-        if (seconds > 9) {
-            seconds
-        } else {
-            '0' + seconds
-        } 
         tenMillis=0
         appendTens = "00"
     }

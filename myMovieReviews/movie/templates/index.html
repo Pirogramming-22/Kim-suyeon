@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Moive Reivews</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .movie_letter {
+            color: rgb(193, 47, 72);
+            font-weight: bold;
+        }
+        header p {
+            font-size: 27px;
+        }
+        header a {
+            margin: 30px 40px;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+        .myMoiveReivews {
+            text-decoration: none;
+            margin: 0 40px;
+        }
+        section {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+      
+        .listElements {
+            background-color:  rgb(236, 234, 234);
+            width: 25%;
+            height: 50%;
+            padding: 20px;
+            margin: 20px;
+        }
+        .letter {
+            display: flex;
+            color: gray;
+        }
+        .letter p {
+            margin: 0;
+            color: black;
+        }
+        .listElements a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'movie:review' %}" class="myMoiveReivews"><p>my<span class="movie_letter">movie</span>reviews</p></a>
+        <a href="{% url 'create:create' %}">Add a New Review</a>
+    </header>
+    <div class="underline"><hr></div>
+
+    
+    <section>
+        {% for create in creates %}
+        <div class="listElements">
+            <h3><a href="{% url 'movie:detail' create.pk %}">{{create.title}}</a></h3>
+            <h5 class="letter">개봉년도<p>{{create.year}}</p></h5>
+            <h5 class="letter">장르<p>{{create.genre}}</p></h5>
+            <h5 class="letter">별점<p>{{create.rating}}</p></h5>
+        </div>
+        {% endfor %}
+    </section>
+   
+</body>
+</html>

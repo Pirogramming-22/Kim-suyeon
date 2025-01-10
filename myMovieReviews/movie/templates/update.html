@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Moive Reivews</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .movie_letter {
+            color: rgb(193, 47, 72);
+            font-weight: bold;
+        }
+        header p {
+            font-size: 27px;
+        }
+        header a {
+            margin: 30px 40px;
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+        .myMoiveReivews {
+            text-decoration: none;
+            margin: 0 40px;
+        }
+        section {
+            background-color: rgb(236, 234, 234);
+            width: 95dvh;
+            height: 100dvh;
+            margin: auto;
+            padding: 100px;
+        }
+        .createMovie {
+            color: rgb(193, 47, 72);
+            font-weight: bold;
+        }
+        .createMovie p {
+            color: black;
+            font-weight: normal;
+            margin: 0;
+        }
+        .createHeader {
+            display: flex;
+            justify-content: center;
+            font-size: 30px;
+        }
+        .createHeader p {
+            margin: 0;
+        }
+        .elements {
+            margin-bottom: 30px;
+        }
+        #review {
+            width: 95dvh;
+            height: 30dvh;
+        }
+        #title {
+            width: 10rem;
+            height: 1.3rem;
+        }
+        #year, #rating, #time {
+            width: 4rem;
+            height: 1.2rem;
+        }
+        #genre {
+            width: 4rem;
+        }
+        #director, #actor {
+            height: 1.2rem;
+        }
+        .btn_submit {
+            width: 7%;
+            margin-top: 20px;
+            text-align: center;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'movie:review' %}" class="myMoiveReivews"><p>my<span class="movie_letter">movie</span>reviews</p></a>
+        <a href="{% url 'create:create' %}">Add a New Review</a>
+    </header>
+    <div class="underline"><hr></div>
+    <section>
+        <div class="createHeader">
+            <span class="createMovie">Movie</span>
+            <p>review🍿</p>
+        </div>
+        <div class="underline"><hr></div>
+        <form action="{% url 'movie:update' movie.pk %}" method="post">
+            {% csrf_token %}
+            <div class="elements">
+                <label for="title">제목:</label>
+                <input type="text" id="title" name="title" value="{{movie.title}}" required>
+            </div>
+            <div class="elements">
+                <label for="year">개봉연도:</label>
+                <input type="text" id="year" name="year" value="{{movie.year}}" required>
+            </div>
+
+            <div class="elements">
+                <label for="genre">장르:</label>
+                <input type="text" id="genre" name="genre" value="{{movie.genre}}" required>
+            </div>
+            <div class="elements">
+                <label for="rating">별점:</label>
+                <input type="text" id="rating" name="rating" value="{{movie.rating}}" required>
+            </div>
+            <div class="elements">
+                <label for="time">러닝타임:</label>
+                <input type="text" id="time" name="time" value="{{movie.time}}" required>
+            </div>
+            <div class="elements">
+                <label for="review">리뷰:</label>
+                <textarea id="review" name="review" required>{{movie.review}}</textarea>
+            </div>
+
+            <div class="elements">
+                <label for="director">감독:</label>
+                <input type="text" id="director" name="director" value="{{movie.director}}" required>
+            </div>
+            <div class="elements">
+                <label for="actor">배우:</label>
+                <input type="text" id="actor" name="actor" value="{{movie.actor}}" required>
+            </div>
+            <button type="submit" class="btn_submit">save</button>
+
+
+        </form>
+        
+    </section>
+</body>
+</html>

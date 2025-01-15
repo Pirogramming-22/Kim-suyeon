@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWIdea</title>
+    <style>
+        body{
+            background-color: rgb(33, 32, 32);
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 5%;
+            padding-left: 5%;
+            margin: 20px;
+        }
+        li {
+            list-style: none;
+        }
+        .headerLink {
+            text-decoration: none;
+            color: white;
+        }
+        .headerLink span {
+            color: rgb(8, 162, 8);
+            font-weight: bold;
+        }
+        hr {
+            border: 1px solid grey;
+        }
+        section {
+            padding: 20px;
+            margin: 3% auto;
+            width: 90%;
+            height: 75dvh; 
+            background-color: rgb(176, 176, 176);
+        }
+        .ideaListElements {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .ideaListContent {
+            margin-bottom: 10px;
+            color: rgb(14, 162, 14);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .ideaListLetter {
+            margin-top: 0;
+        }
+        .detailImage img {
+            width: 100%;
+            height: 200px;
+        }
+        .list_container {
+            display: flex;
+            gap: 5%;
+        }
+        .ideaDetailContent {
+            border: 2px solid white;
+            border-radius: 10px;
+            height: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .detailContext {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .idea p {
+            margin-top: 0;
+        }
+        .buttonList {
+            padding-top: 3%;
+            padding-left: 35%;
+            padding-right: 35%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn_delete {
+            border: 2px solid rgb(233, 6, 6);
+            background-color: rgb(233, 6, 6);
+            color: white;
+        }
+        .btn_list, .btn_update, .btn_delete {
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn_list {
+            border: 2px solid white;
+        }
+        .btn_update {
+            border: 2px solid rgb(0, 115, 255);
+            background-color: rgb(0, 115, 255);
+            color: white;
+        }
+        .ideaList a {
+            text-decoration: none;
+            color: black;
+        }
+        .ideaList {
+            padding: 0;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .detailLetter h1 {
+            color: rgb(180, 18, 126);
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="" class="headerLink">MY <span>SW Idea</span> Manage</a></li>
+            <li><a href="{% url 'create:register' %}" class="headerLink">아이디어 등록</a></li>
+            <li><a href="{% url 'demos:main' %}" class="headerLink">아이디어 관리</a></li>
+            <li><a href="{% url 'demos:devToolRegister' %}" class="headerLink">개발툴 등록</a></li>
+            <li><a href="{% url 'demos:devToolList' %}" class="headerLink">개발툴 관리</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <section>
+        <div class="ideaListElements">
+            <p class="ideaListContent">DevTool Detail</p>
+            <p class="ideaListLetter"> 개발툴 세부 내용 페이지 입니다. 자신이 다룰수 있는 개발툴에 대한 상세내용을 확인해 보아요.</p>
+        </div>
+        <div class="ideaDetailContent">
+            <div class="detailLetter">
+                <h1>{{detail.name}} </h1>
+                <div>
+                    <p>{{detail.kind}}</p>
+                    <p>{{detail.content}}</p>
+                </div>
+            </div>
+            <div class="listContainer">
+                <h3>• 만들 수 있는 SW 목록 </h3>
+                <ul class="ideaList">
+                    {% for post in detail.posts.all %}
+                        <li>
+                            <a href="{% url 'demos:ideaDetail' post.pk %}">{{ post.title }}</a>
+                        </li>
+                    {% empty %}
+                        <li>등록된 아이디어가 없습니다.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="buttonList">
+            <form action="{% url 'demos:devDelete' detail.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn_delete">삭제</button>
+            </form>
+            <form action="{% url 'demos:devToolList' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn_list">목록</button>
+            </form>
+            <form action="{% url 'demos:devToolUpdate' detail.pk %}" >
+                {% csrf_token %}
+                <button type="submit" class="btn_update">수정</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

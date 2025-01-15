@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWIdea</title>
+    <style>
+        body{
+            background-color: rgb(33, 32, 32);
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 5%;
+            padding-left: 5%;
+            margin: 20px;
+        }
+        li {
+            list-style: none;
+        }
+        .headerLink {
+            text-decoration: none;
+            color: white;
+        }
+        .headerLink span {
+            color: rgb(8, 162, 8);
+            font-weight: bold;
+        }
+        hr {
+            border: 1px solid grey;
+        }
+        section {
+            padding: 20px;
+            margin: 3% auto;
+            width: 90%;
+            height: 75dvh; 
+            background-color: rgb(176, 176, 176);
+        }
+        .ideaListElements {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .ideaListContent {
+            margin-bottom: 10px;
+            color: rgb(14, 162, 14);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .ideaListLetter {
+            margin-top: 0;
+        }
+        .detailImage img {
+            width: 100%;
+            height: 200px;
+        }
+        .list_container {
+            display: flex;
+            gap: 5%;
+        }
+        .ideaDetailContent {
+            border: 2px solid white;
+            border-radius: 10px;
+            height: auto;
+            padding: 20px;
+            display: flex;
+            gap: 50px;
+        }
+        .detailContext {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        .idea p {
+            margin-top: 0;
+        }
+        .buttonList {
+            padding-top: 3%;
+            padding-left: 35%;
+            padding-right: 35%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn_delete {
+            border: 2px solid rgb(233, 6, 6);
+            background-color: rgb(233, 6, 6);
+            color: white;
+        }
+        .btn_list, .btn_update, .btn_delete {
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn_list {
+            border: 2px solid white;
+        }
+        .btn_update {
+            border: 2px solid rgb(0, 115, 255);
+            background-color: rgb(0, 115, 255);
+            color: white;
+        }
+        .idea a {
+            text-decoration: none;
+            font-weight: bold;
+            color: rgb(180, 18, 126);
+        }
+        .star-icon {
+            text-decoration: none;
+            color: gold;
+
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="" class="headerLink">MY <span>SW Idea</span> Manage</a></li>
+            <li><a href="{% url 'create:register' %}" class="headerLink">아이디어 등록</a></li>
+            <li><a href="{% url 'demos:main' %}" class="headerLink">아이디어 관리</a></li>
+            <li><a href="{% url 'demos:devToolRegister' %}" class="headerLink">개발툴 등록</a></li>
+            <li><a href="{% url 'demos:devToolList' %}" class="headerLink">개발툴 관리</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <section>
+        <div class="ideaListElements">
+            <p class="ideaListContent">Idea Detail</p>
+            <p class="ideaListLetter">아이디어 세부내용 페이지 입니다. 당신이 구현하려 한 아이디어들을 자세히 살펴보세요.</p>
+        </div>
+        <div class="ideaDetailContent">
+            <div class="detailImage">
+                {% if detail.img %}
+                    <img src="{{ detail.img.url }}" alt="{{ post.title }}" >
+                {% else %}
+                    <p>❌이미지가 없습니다❌</p>
+                {% endif %}
+            </div>
+            <div class="detailLetter">
+                <h1>
+                    {{detail.title}}
+                    <a href="{% url 'create:toggle_star' detail.pk %}" class="star-icon">
+                        {% if detail.is_starred %}
+                            ★
+                        {% else %}
+                            ☆
+                        {% endif %}
+                    </a>
+                </h1>
+                <ul class="detailContext">
+                    <li class="idea">1. 아이디어 관심도<p>{{detail.interest}}</p></li>
+                    <li class="idea">2. 예상 개발 툴<p><a href="{% url 'demos:devToolDetail' detail.tool.pk %}">{{detail.tool.name}}</a></p></li>
+                    <li class="idea">3. 아이디어 설명<p>{{detail.content}}</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="buttonList">
+            <form action="{% url 'demos:ideaDelete' detail.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn_delete">삭제</button>
+            </form>
+            <form action="{% url 'demos:main' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn_list">목록</button>
+            </form>
+            <form action="{% url 'demos:ideaUpdate' detail.pk %}" >
+                {% csrf_token %}
+                <button type="submit" class="btn_update">수정</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

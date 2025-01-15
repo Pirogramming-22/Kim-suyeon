@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWIdea</title>
+    <style>
+        body{
+            background-color: rgb(33, 32, 32);
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 5%;
+            padding-left: 5%;
+            margin: 20px;
+        }
+        li {
+            list-style: none;
+        }
+        .headerLink {
+            text-decoration: none;
+            color: white;
+        }
+        .headerLink span {
+            color: rgb(8, 162, 8);
+            font-weight: bold;
+        }
+        hr {
+            border: 1px solid grey;
+        }
+        section {
+            padding: 20px;
+            margin: 3% auto;
+            width: 90%;
+            height: 80dvh;
+            background-color: rgb(176, 176, 176);   
+        }
+        .ideaListElements {
+            text-align: center;
+        }
+        .ideaListContent {
+            margin-bottom: 10px;
+            color: rgb(14, 162, 14);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .ideaListLetter {
+            margin-top: 0;
+        }
+        form {
+            position: relative;
+            margin-top: 70px;
+        }
+        .elements {
+            
+            padding-left: 35%;
+            padding-right: 35%;
+            margin-bottom: 30px;
+        }
+        #content {
+            width: 60%;
+            height: 100px;
+        }
+        .btn {
+            position: absolute;
+            right: 40%;
+            border-radius: 20px;
+            width: 10%;
+            height: 7%;
+            cursor: pointer;
+            color: rgb(14, 162, 14);
+            border: 2px solid rgb(14, 162, 14);
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="" class="headerLink">MY <span>SW Idea</span> Manage</a></li>
+            <li><a href="{% url 'create:register' %}" class="headerLink">아이디어 등록</a></li>
+            <li><a href="{% url 'demos:main' %}" class="headerLink">아이디어 관리</a></li>
+            <li><a href="{% url 'demos:devToolRegister' %}" class="headerLink">개발툴 등록</a></li>
+            <li><a href="{% url 'demos:devToolList' %}" class="headerLink">개발툴 관리</a></li>
+        </ul>
+    </nav>
+    <hr />
+    <section>
+        <div class="ideaListElements">
+            <p class="ideaListContent">Idea Register</p>
+            <p class="ideaListLetter">아이디어 등록 페이지 입니다. 당신의 아이디어 페이지를 잊지 말고 기록하세요!</p>
+        </div>
+        <form action="{% url 'create:register' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="elements">
+                <label for="title">아이디어명:</label>
+                <br>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="elements">
+                <label for="img">image: </label>
+                <br>
+                <input type="file" id="img" name="img" required >
+            </div>
+            <div class="elements">
+                <label for="content">아이디어 설명:</label>
+                <br>
+                <textarea id="content" name="content" required></textarea>
+            </div>
+            <div class="elements">
+                <label for="interest">아이디어 관심도: </label>
+                <br>
+                <input type="text" id="interest" name="interest" required>
+            </div>
+            
+            <div class="elements">
+                <label for="tool">예상 개발툴: </label>
+                <br>
+                <select id="tool" name="tool" required>
+                    <option value="" disabled selected>-----------</option>
+                    {% for tool in tools %}
+                    <option value="{{ tool.id }}">{{ tool.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn">SUBMIT</button>
+        </form>
+
+    </section>
+</body>
+</html>

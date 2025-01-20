@@ -60,13 +60,10 @@ def comment_ajax(request):
         post_id = req.get('id')
         comment_text = req.get('comment')
 
-        # Post를 가져옵니다.
         post = get_object_or_404(Post, id=post_id)
 
-        # 댓글을 생성합니다.
         comment = Comment.objects.create(post=post, content=comment_text)
 
-        # 댓글 수를 동적으로 계산합니다.
         comment_count = Comment.objects.filter(post=post).count()
 
         return JsonResponse({
@@ -75,7 +72,7 @@ def comment_ajax(request):
                 'id': comment.id,
                 'content': comment.content,
             },
-            'comment_count': comment_count,  # 계산된 댓글 수 반환
+            'comment_count': comment_count,  
         })
 
 
@@ -86,17 +83,14 @@ def delete_comment_ajax(request):
         post_id = req.get('id')
         comment_id = req.get('comment_id')
 
-        # Post와 댓글을 가져옵니다.
         post = get_object_or_404(Post, id=post_id)
         comment = Comment.objects.filter(id=comment_id, post=post).first()
 
-        # 댓글이 존재하면 삭제합니다.
         if comment:
             comment.delete()
         else:
             return JsonResponse({'error': 'Comment not found'}, status=404)
 
-        # 댓글 수를 동적으로 계산합니다.
         comment_count = Comment.objects.filter(post=post).count()
 
         return JsonResponse({'id': post_id, 'comment_count': comment_count})

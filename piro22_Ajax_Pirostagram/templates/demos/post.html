@@ -106,13 +106,9 @@
 
       const { data } = await axios.post(url, { id, comment: commentText });
 
-      // 댓글 추가
       addCommentToUI(id, data.comment);
-
-      // 댓글 수 업데이트
+ 
       updateCommentCount(id, data.comment_count);
-
-      // 입력 필드 비우기
       commentInput.value = "";
     };
 
@@ -122,13 +118,13 @@
 
       const { data } = await axios.post(url, { id: postId, comment_id: commentId });
 
-      // 댓글 UI에서 삭제
+
       const commentElement = document.querySelector(`[data-comment-id="${commentId}"]`);
       if (commentElement) {
         commentElement.remove();
       }
 
-      // 댓글 수 업데이트
+
       updateCommentCount(postId, data.comment_count);
     };
 
@@ -153,9 +149,6 @@
 
       commentList.appendChild(newComment);
     };
-
-        
-
 
 
     const updateCommentCount = (id, commentCount) => {

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'demos/style.css'%}" />
+    <link rel="stylesheet" href="{%static 'demos/reset.css'%}" />
+    <title>Pirostagram</title>
+  </head>
+  <body>
+    <div class="container">
+        <header class="header">
+            <button class="header__goBackButton">
+                <a href="{% url 'demos:main'%}">
+                    <img src="{%static 'icons/goBack.svg'%}" alt="뒤로 가기 버튼" />
+                </a>
+            </button>
+            <div class="header__username">Pirogramming</div>
+            <div class="header__rightButtons">
+            <button class="header__alarmButton">
+                <img src="{%static 'icons/alarm.svg'%}" alt="알림 열기 버튼" />
+            </button>
+            <button class="header__moreButton">
+                <img src="{%static 'icons/pencil-square.svg'%}" alt="글쓰기 버튼" />
+            </button>
+            </div>
+        </header>
+        <div class="form__container">
+            <form action="{% url 'demos:create' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title" class="name">Title:</label>
+                    {{form.title}}
+                </div>
+                <div class="form-group">
+                    <label for="content" class="name">Content:</label>
+                    {{form.content}}
+                </div>
+                <div class="form-group">
+                    <label for="content" class="name">Like:</label>
+                    {{form.like}}
+                </div>
+                <div class="form-group">
+                    <label for="photo" class="name">Photo:</label>
+                    {{ form.photo }}
+                </div>
+
+                <input type="submit" value="Upload" class="button">
+            </form>
+        </div>
+    </div>
+  </body>
